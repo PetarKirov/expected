@@ -1306,10 +1306,10 @@ version (D_Exceptions)
         {
             import core.lifetime : forward;
             import std.traits : isAssignable;
-            static if (isAssignable!(string, T)) super(forward!value, file, line);
+            static if (isAssignable!(string, T)) super(value, file, line);
             else super("Unexpected error", file, line);
 
-            this.error = error;
+            this.error = forward!value;
         }
     }
 }
